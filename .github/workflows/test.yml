@@ -23,9 +23,9 @@ jobs:
     runs-on: ubuntu-latest
     # requires the test to have passed
     needs: test
+    # run only if a tag with patter v* is pushed
+    if: ${{ github.event_name == 'release' }}
     steps:
     - name: Release
-      # run only if a tag with patter v* is pushed
-      if: ${{ github.event_name == 'release' }}
       run: |
         echo "Released!"
