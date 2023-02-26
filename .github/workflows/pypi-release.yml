@@ -1,0 +1,16 @@
+name: Build the DaC package
+run-name: ${{ github.actor }} is building the dac package 📦 (${{ github.event_name }})
+
+on:
+  workflow_run:
+    workflows: ["Test DaC"]
+    types: ["completed"]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout 🔖
+      if: ${{ github.event_name == 'release' }}
+      run: |
+        echo "Released!"

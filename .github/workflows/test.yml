@@ -1,0 +1,21 @@
+name: Test DaC
+run-name: ${{ github.actor }} is testing out dac 🚀
+on:
+  push:
+jobs:
+  check-style:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check
+      run: |
+        echo "Checked!"
+  test:
+    runs-on: "${{ matrix.os }}"
+    strategy:
+      matrix:
+        os: ["ubuntu-latest"]
+        version: ["3.11"]
+    steps:
+    - name: Test
+      run: |
+        echo "Tested!"
