@@ -30,7 +30,7 @@ jobs:
   docs:
     runs-on: ubuntu-latest
     needs: [test, check-style]
-    if: ${{ github.ref != 'refs/heads/main' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
