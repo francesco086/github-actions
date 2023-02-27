@@ -1,5 +1,5 @@
-name: Test DaC
-run-name: ${{ github.actor }} is testing out dac 🚀
+name: actions
+run-name: ${{ github.actor }} dac actions 🚀
 on:
   push:
 jobs:
@@ -21,11 +21,20 @@ jobs:
         echo "Tested!"
   release:
     runs-on: ubuntu-latest
-    # requires the test to have passed
     needs: test
-    # run only if a tag with patter v* is pushed
     if: ${{ github.event_name == 'release' }}
     steps:
     - name: Release
       run: |
         echo "Released!"
+  docs:
+    runs-on: ubuntu-latest
+    needs: test
+    if: ${{ github.ref != 'refs/heads/main' }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      - run: |
+          echo "Docs!"
