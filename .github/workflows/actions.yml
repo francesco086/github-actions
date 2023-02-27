@@ -1,5 +1,5 @@
 name: actions
-run-name: ${{ github.actor }} dac actions ${{ github.ref }} 🚀
+run-name: ${{ github.actor }} dac actions ${{ github.event_name }} ${{ github.ref }} 🚀
 on:
   push:
 jobs:
